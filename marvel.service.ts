@@ -11,7 +11,7 @@ export class MarvelService{
         let url = 'http://gateway.marvel.com:80/v1/public/characters?ts=1&apikey=4339f97c8d2f4e6b58223609ccd215b8&hash=a00641a5c54db3011f573060d17696d3';
         return this.http.get(url)
             .toPromise()
-            .then(respuesta => respuesta.json().data.results)
+            .then(request =>request.json().data.results)
             .catch(this.oneError);
     }
 
@@ -24,7 +24,7 @@ export class MarvelService{
     }
 
     private oneError(error: any){
-        console.log("Ocurrió un error con el llamado a Marvel API");
+        console.log("An error occured while accessng the Marvel API");
         return Promise.reject(error.message || error);
     }
 }
